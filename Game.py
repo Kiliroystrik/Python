@@ -1,7 +1,7 @@
 class Game:
     
     def __init__(self):
-        
+
         self.enemyStrenght = 10
         self.enemyLife = 10
         self.enemyAttack = self.enemyStrenght / 3
@@ -9,6 +9,7 @@ class Game:
         self.playerStrenght = 10
         self.playerAttack = self.playerStrenght / 3
     
+    """BATTLE LOGIC"""
     def battleEngine(self):
 
         if self.enemyLife > 0:
