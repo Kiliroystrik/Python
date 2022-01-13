@@ -34,12 +34,4 @@ class Player:
      if self.life <= 0:
         print("player is dead")
 
-player1 = Player('Mage', 'Kiliroy', 'Striker')
-
-"""
----TEST---
-print(player1.name)
-print(player1.classe)
-print(player1.surname)
-"""
 

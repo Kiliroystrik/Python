@@ -1,3 +1,5 @@
+from Player import Player
+
 class Game:
     
     def __init__(self):
@@ -37,6 +39,15 @@ class Game:
     def playerHit(self):
         self.enemyLife = self.enemyLife - self.playerAttack
         print(f"Vous infligez {self.playerAttack}  dégats. L'ennemie a encore {self.enemyLife } HP")
+
+player1 = Player('Mage', 'Kiliroy', 'Striker')
+
+"""
+---TEST---
+print(player1.name)
+print(player1.classe)
+print(player1.surname)
+"""
 
 
 game = Game()
