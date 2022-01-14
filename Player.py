@@ -4,11 +4,12 @@ class Player:
         self.classe = classe
         self.name = name
         self.surname = surname
-        self.strenght = 10
+        self.strenght = 90
         self.stamina = 10
         self.life = 10
         self.experience = 0
         self.level = 1
+        self.attack = self.strenght / 3
 
     def levelUp(self):
         if self.experience < 100:
@@ -31,10 +32,12 @@ class Player:
      hit = self.strenght/3
 
     def isDead(self):
-     if self.life <= 0:
-        print("player is dead")
+        if self.life <= 0:
+            return True
+        else: 
+            return False
 
-player1 = Player('Mage', 'Kiliroy', 'Striker')
+# player1 = Player('Mage', 'Kiliroy', 'Striker')
 
 """
 ---TEST---

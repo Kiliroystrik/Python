@@ -1,46 +1,76 @@
+from Player import Player
+from Enemy import Enemy
+
 class Game:
-    
+
+
     def __init__(self):
 
-        self.enemyStrenght = 10
-        self.enemyLife = 10
-        self.enemyAttack = self.enemyStrenght / 3
-        self.playerLife = 10
-        self.playerStrenght = 10
-        self.playerAttack = self.playerStrenght / 3
+        # Instance of player
+        self.player = Player("Mage", "Kiliroy", "Moon")
+
+        # Instance of enemy
+        self.enemy = Enemy()
+
+        
     
     """BATTLE LOGIC"""
     def battleEngine(self):
 
-        if self.enemyLife > 0:
+        if self.enemy.isDead() == False:
             print("l'ennemie attaque")
             self.enemyHit()
         else:
             print("vous avez gagné")
             return
 
-        if self.playerLife > 0:
+        if self.player.isDead() == False:
             print("Vous attaquez")
             self.playerHit()
         else:
             print("l'ennemie a gagné")
             return
 
+    """WIN BATTLE REWARDS"""
+
+    def battleWin(self):
+        self.player.experience = self.player.experience + self.enemy.expDrop
+        print(f"vous avez gagné {self.enemy.expDrop} XP. Vous etes niveau {self.player.level} avec {self.player.experience} d'experiences")
+
+    def battleLost(self):
+        print("you lose")
+
+    """INIT BATTLE"""
     def battle(self):
-        if self.playerLife > 0 and self.enemyLife > 0:
+        while self.player.isDead() == False and self.enemy.isDead() == False:
             self.battleEngine()
+        if self.enemy.isDead():
+            self.battleWin()
+        else:
+            self.battleLost()
 
+    """ENEMY DAMAGE LOGIC"""
     def enemyHit(self):
-        self.playerLife = self.playerLife - self.enemyAttack
-        print(f"Il vous inflige {self.enemyAttack}  dégats. Il vous reste  { self.playerLife } HP")
+        self.player.life = self.player.life - self.enemy.attack
 
+        if self.player.life >0:
+            print(f"Il vous inflige {self.enemy.attack}  dégats. Il vous reste  { self.player.life } HP")
+        else:
+            print(f"Il vous inflige {self.enemy.attack}  dégats. Vous n'avez plus de HP")
+
+    """player DAMAGE LOGIC"""
     def playerHit(self):
-        self.enemyLife = self.enemyLife - self.playerAttack
-        print(f"Vous infligez {self.playerAttack}  dégats. L'ennemie a encore {self.enemyLife } HP")
+        self.enemy.life = self.enemy.life - self.player.attack
+
+        if self.enemy.life > 0:
+            print(f"Vous infligez {self.player.attack}  dégats. L'ennemie a encore {self.enemy.life } HP")
+        else:
+            print(f"Vous infligez {self.player.attack}  dégats. L'ennemie n'a plus de vie")
 
 
 game = Game()
 
+# print(game.player.life)
 game.battle()
-game.battle()
-game.battle()
+# game.battle()
+# game.battle()
