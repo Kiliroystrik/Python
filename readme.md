@@ -3,6 +3,8 @@ RPG Project
 It is a small game project to develop my skills in Python
 Classes, fights, exploration...
 
+Features : classes, fights, exploration...
+
 To Do :
 
 - Fight systeme
