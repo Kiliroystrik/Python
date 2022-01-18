@@ -1,5 +1,5 @@
 from Player import Player
-from Enemy import Enemy
+from enemies.Enemy import Enemy
 
 class Game:
 
@@ -13,7 +13,6 @@ class Game:
         self.enemy = Enemy()
 
         
-    
     """BATTLE LOGIC"""
     def battleEngine(self):
 
@@ -35,6 +34,7 @@ class Game:
 
     def battleWin(self):
         self.player.experience = self.player.experience + self.enemy.expDrop
+        self.player.levelUp()
         print(f"vous avez gagné {self.enemy.expDrop} XP. Vous etes niveau {self.player.level} avec {self.player.experience} d'experiences")
 
     def battleLost(self):
@@ -60,6 +60,7 @@ class Game:
 
     """player DAMAGE LOGIC"""
     def playerHit(self):
+        self.player.attackAnimation()
         self.enemy.life = self.enemy.life - self.player.attack
 
         if self.enemy.life > 0:
@@ -68,9 +69,4 @@ class Game:
             print(f"Vous infligez {self.player.attack}  dégats. L'ennemie n'a plus de vie")
 
 
-game = Game()
 
-# print(game.player.life)
-game.battle()
-# game.battle()
-# game.battle()

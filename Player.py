@@ -1,15 +1,28 @@
-class Player:
+import pygame
+pygame.init()
+class Player(pygame.sprite.Sprite):
 
     def __init__(self, classe, name, surname):
+        super().__init__()
         self.classe = classe
         self.name = name
         self.surname = surname
         self.strenght = 90
         self.stamina = 10
-        self.life = 10
+        self.life = 100
+        self.maxLife = 100
         self.experience = 0
         self.level = 1
         self.attack = self.strenght / 3
+        self.image = pygame.image.load('assets/rpgDungeon/frames/wizzard_m_idle_anim_f0.png')
+        self.resizedImage = pygame.transform.scale(self.image, (70, 120))
+        self.rect = self.resizedImage.get_rect()
+        self.rect.x = 70
+        self.rect.y = 120
+
+    def attackAnimation(self):
+        self.image = pygame.image.load('assets/rpgDungeon/frames/wizzard_m_hit_anim_f0.png')
+
 
     def levelUp(self):
         if self.experience < 100:
@@ -36,6 +49,17 @@ class Player:
             return True
         else: 
             return False
+
+    def healthBar(self, Surface):
+
+        # HEALTH BAR POSITION
+        BAR_POSITION = [70, 250, self.life, 10]
+
+        # HEALTH BAR COLOR
+        BAR_COLOR = (111, 210, 46)
+
+        pygame.draw.rect(Surface, BAR_COLOR, BAR_POSITION)
+
 
 # player1 = Player('Mage', 'Kiliroy', 'Striker')
 

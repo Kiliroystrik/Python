@@ -6,9 +6,9 @@ class Enemy:
     def __init__(self):
         self.classe = "Brigand"
         self.name = "Kaizer"
-        self.strenght = 10
+        self.strenght = 100
         self.stamina = 10
-        self.life = 10
+        self.life = 50
         self.level = 1
         self.attack = self.strenght / 3
         self.expDrop = round((random() * 100),2)

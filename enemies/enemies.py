@@ -1,5 +1,4 @@
 from random import random
-from Enemy import Enemy
 
 # Randomize enemy level
 brigandLevel = round((random()*5),0) + 1
